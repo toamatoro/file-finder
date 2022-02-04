@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		ABF9D06027ACD9DE00AE1A1E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D05F27ACD9DE00AE1A1E /* main.cpp */; };
-		ABF9D06927AD852A00AE1A1E /* traverseDirectory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D06827AD852A00AE1A1E /* traverseDirectory.cpp */; };
 		ABF9D06B27AD879700AE1A1E /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D06A27AD879700AE1A1E /* Container.cpp */; };
+		ABF9D06E27AD8AD200AE1A1E /* Directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,8 +28,9 @@
 		ABF9D05C27ACD9DE00AE1A1E /* file-finder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "file-finder"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF9D05F27ACD9DE00AE1A1E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		ABF9D06727ACE26D00AE1A1E /* Container.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
-		ABF9D06827AD852A00AE1A1E /* traverseDirectory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = traverseDirectory.cpp; sourceTree = "<group>"; };
 		ABF9D06A27AD879700AE1A1E /* Container.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Container.cpp; sourceTree = "<group>"; };
+		ABF9D06C27AD8A4D00AE1A1E /* Directory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Directory.h; sourceTree = "<group>"; };
+		ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Directory.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +49,8 @@
 			children = (
 				ABF9D06727ACE26D00AE1A1E /* Container.h */,
 				ABF9D06A27AD879700AE1A1E /* Container.cpp */,
+				ABF9D06C27AD8A4D00AE1A1E /* Directory.h */,
+				ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */,
 				ABF9D05E27ACD9DE00AE1A1E /* file-finder */,
 				ABF9D05D27ACD9DE00AE1A1E /* Products */,
 			);
@@ -65,7 +68,6 @@
 			isa = PBXGroup;
 			children = (
 				ABF9D05F27ACD9DE00AE1A1E /* main.cpp */,
-				ABF9D06827AD852A00AE1A1E /* traverseDirectory.cpp */,
 			);
 			path = "file-finder";
 			sourceTree = "<group>";
@@ -129,7 +131,7 @@
 			files = (
 				ABF9D06B27AD879700AE1A1E /* Container.cpp in Sources */,
 				ABF9D06027ACD9DE00AE1A1E /* main.cpp in Sources */,
-				ABF9D06927AD852A00AE1A1E /* traverseDirectory.cpp in Sources */,
+				ABF9D06E27AD8AD200AE1A1E /* Directory.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

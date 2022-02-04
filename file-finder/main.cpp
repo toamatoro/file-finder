@@ -6,15 +6,15 @@
 //
 
 #include <iostream>
-#include <fstream>
 #include <pthread.h>
-#include <vector>
+
+#include "Directory.h"
+#include "Container.h"
 
 int main(int argc, const char * argv[])
 {
-    std::filesystem::path dir;
-    std::vector<std::string> substrs;
-    unsigned long threads;
+    Directory * Dir;
+    //std::vector<std::string> substrs;
     
     if(argc <= 2)
     {
@@ -22,14 +22,13 @@ int main(int argc, const char * argv[])
     }
     else
     {
-        dir = argv[1];
+        Dir = new Directory(argv[1]);
         
         for(int i = 2; i < argc; i++)
         {
-            substrs.push_back(argv[i]);
+            Dir->addSubStr(argv[i]);
         }
         
-        threads = substrs.size();
     }
     
     
