@@ -6,7 +6,7 @@
 //
 
 #include <iostream>
-#include <pthread.h>
+#include <thread>
 
 #include "Directory.h"
 #include "Container.h"
@@ -34,20 +34,27 @@ int main(int argc, const char * argv[])
         
     }
     
-    Container C(10);
+    Container C(23);
     
-    Dir->traverse(argv[2], &C);
-    
-    Command Cmd;
-    Cmd.getInput(&C);
-    
+    Command * Cmd = new Command();
+    /*
     //one thread to get input commands //"CMD Object"
+    Cmd.getInput(&C);
     
     //traverse dir
     
+    Dir->traverse(argv[2], &C);
+    
+    */
+    //std::vector<std::thread> t(Dir);
+    
+    
+    
+    std::thread th1(&Command::getInput, Cmd, &C);
+    
     //n search threads for n args
     
-    
+    th1.join();
     
     return 0;
 }

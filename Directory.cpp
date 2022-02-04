@@ -35,3 +35,13 @@ void Directory::traverse(std::string target, Container * buffer)
         }
     }
 }
+
+void Directory::setThreads(int n)
+{
+    this->n_threads = n;
+}
+
+int Directory::getThreads()
+{
+    return this->n_threads;
+}

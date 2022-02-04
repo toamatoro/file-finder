@@ -23,9 +23,13 @@ void Command::getInput(Container * C)
     while(input != "exit")
     {
         std::cout << "file-finder % ";
-        std::cin >> input;
+        getline(std::cin, input);
         
-        if(input == "dump")
+        if(input.length() == 0)
+        {
+            continue;
+        }
+        else if(input == "dump")
         {
             this->dump(C);
         }
@@ -41,7 +45,9 @@ void Command::getInput(Container * C)
 
 void Command::dump(Container * C)
 {
+    C->mutex.lock();
     C->dump();
+    C->mutex.unlock();
 }
 
 void Command::exit(Container * C)

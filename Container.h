@@ -12,7 +12,6 @@
 
 class Container
 {
-    std::mutex mutex;
     std::vector<std::string> objects;
     
     unsigned long capacity;
@@ -23,6 +22,8 @@ public:
     
     void dump();
     void addItem(std::string);
+    
+    std::mutex mutex; //why is public
 };
 
 #endif /* Container_h */

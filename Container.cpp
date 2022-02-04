@@ -15,26 +15,38 @@ Container::Container(unsigned long capacity)
 
 Container::~Container()
 {
+    this->mutex.lock();
+    
     if(!this->objects.empty())
+    {
         this->objects.clear();
+        std::cout << "Container::~Container - Shared Container contents cleared.\n";
+    }
+    else
+    {
+        std::cout << "Container::~Container - Attempted to clear Shared Container, already empty.\n";
+    }
+    
+    this->mutex.unlock();
 }
 
+/*
+ 
+ Container::dump - not thread safe, caller must ensure container is available
+ 
+ */
 void Container::dump()
 {
-    std::cout << "DUMP" << std::endl;
-    
-    //this->mutex.lock();
-    //TRY LOCK HERE
-    
     for(int i = 0; i < this->objects.size(); i++)
     {
         std::cout << objects[i] << std::endl;
     }
     
     if(!this->objects.empty())
+    {
+        std::cout << "\nContainer::dump - Shared Container contents cleared.\n\n";
         this->objects.clear();
-    
-    //this->mutex.unlock();
+    }
 }
 
 /*

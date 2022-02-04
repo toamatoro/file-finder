@@ -23,6 +23,8 @@ public:
     
     void traverse(std::string, Container *); //make sure these methods pass
     void addSubStr(std::string);
+    void setThreads(int);
+    int getThreads();
 };
 
 #endif /* Directory_h */
