@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <thread>
+#include <vector>
 
 #include "Directory.h"
 #include "Container.h"
@@ -14,7 +15,7 @@
 
 int main(int argc, const char * argv[])
 {
-    Directory * Dir;
+    std::vector<Directory> Dirs;
     //std::vector<std::string> substrs;
     
     if(argc <= 2)
@@ -25,11 +26,12 @@ int main(int argc, const char * argv[])
     }
     else
     {
-        Dir = new Directory(argv[1]);
+        //Dir = new Directory(argv[1], argc - 2);
         
         for(int i = 2; i < argc; i++)
         {
-            Dir->addSubStr(argv[i]);
+            //Dir->addSubStr(argv[i]);
+            Dirs.push_back(Directory(argv[1], argv[i]));
         }
         
     }
@@ -37,24 +39,28 @@ int main(int argc, const char * argv[])
     Container C(23);
     
     Command * Cmd = new Command();
-    /*
-    //one thread to get input commands //"CMD Object"
-    Cmd.getInput(&C);
+
+    /*if(Dir.getThreads() < 1) //SHOULD NOT HAPPEN
+        return 1;*/
     
-    //traverse dir
+    std::vector<std::thread> t(argc - 1); // argc -2 +1
     
-    Dir->traverse(argv[2], &C);
+    //Thread 0 is thread to get commands
+    t[0] = std::thread(&Command::getInput, Cmd, &C);
     
-    */
-    //std::vector<std::thread> t(Dir);
+    for(int i = 1; i < t.size(); i++)
+    {
+        t[i] = std::thread(&Directory::traverse, Dirs[i-1], Dirs[i-1].getTarget(), &C); //originall i-1
+    }
     
+    //NEED TO CHECK WHEN ALL ARE COMPLETE
     
+    for(int i = 0; i < t.size(); i++)
+    {
+        t[i].join();
+    }
     
-    std::thread th1(&Command::getInput, Cmd, &C);
-    
-    //n search threads for n args
-    
-    th1.join();
+    C.dump();
     
     return 0;
 }

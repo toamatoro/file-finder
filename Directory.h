@@ -14,17 +14,16 @@
 class Directory
 {
     std::string path;
-    std::vector<std::string> substrs;
+    std::string target;
     
-    int n_threads;
+    //int n_threads;
 public:
-    Directory(std::string);
-    ~Directory();
+    Directory(std::string, std::string);
+    //~Directory();
     
     void traverse(std::string, Container *); //make sure these methods pass
-    void addSubStr(std::string);
-    void setThreads(int);
-    int getThreads();
+    //void addSubStr(std::string);
+    std::string getTarget();
 };
 
 #endif /* Directory_h */
