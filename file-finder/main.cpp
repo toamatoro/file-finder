@@ -39,7 +39,7 @@ int main(int argc, const char * argv[])
     Dir->traverse(argv[2], &C);
     
     Command Cmd;
-    int x = Cmd.start(&C);
+    Cmd.getInput(&C);
     
     //one thread to get input commands //"CMD Object"
     
@@ -49,5 +49,5 @@ int main(int argc, const char * argv[])
     
     
     
-    return x;
+    return 0;
 }

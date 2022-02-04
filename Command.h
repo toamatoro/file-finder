@@ -15,10 +15,10 @@ class Command
     std::string cmd;
     void send();
 public:
-    //Command();
-    //~Command();
+    Command();
+    ~Command();
     
-    int start(Container *);
+    void getInput(Container *);
 };
 
 #endif /* Command_h */
