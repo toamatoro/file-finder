@@ -8,18 +8,21 @@
 #ifndef Container_h
 #define Container_h
 
+#include <vector>
+
 class Container
 {
-    std::mutex lock;
+    std::mutex mutex;
     std::vector<std::string> objects;
-public:
-    unsigned long capacity;
     
+    unsigned long capacity;
+    bool isFull();
+public:
     Container(unsigned long);
     ~Container();
     
-    bool dump();
-    bool addItem(std::string);
+    void dump();
+    void addItem(std::string);
 };
 
 #endif /* Container_h */

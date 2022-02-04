@@ -6,6 +6,9 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <filesystem>
+
 #include "Directory.h"
 
 Directory::Directory(std::string path)
@@ -18,7 +21,17 @@ void Directory::addSubStr(std::string substr)
     this->substrs.push_back(substr);
 }
 
-void Directory::traverse(std::string path, std::string target, Container buffer)
+void Directory::traverse(std::string target, Container * buffer)
 {
+    const std::filesystem::path dir{this->path};
     
+    for(auto &a_entry :  std::filesystem::recursive_directory_iterator{dir})
+    {
+        std::string s_entry = a_entry.path();
+        
+        if(s_entry.find(target, 0) != std::string::npos)
+        {
+            buffer->addItem(s_entry);
+        }
+    }
 }

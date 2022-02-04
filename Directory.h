@@ -21,7 +21,7 @@ public:
     Directory(std::string);
     ~Directory();
     
-    void traverse(std::string, std::string, Container); //make sure these methods pass
+    void traverse(std::string, Container *); //make sure these methods pass
     void addSubStr(std::string);
 };
 

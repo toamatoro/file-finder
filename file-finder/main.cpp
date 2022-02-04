@@ -10,6 +10,7 @@
 
 #include "Directory.h"
 #include "Container.h"
+#include "Command.h"
 
 int main(int argc, const char * argv[])
 {
@@ -19,6 +20,8 @@ int main(int argc, const char * argv[])
     if(argc <= 2)
     {
         printf("Usage: ./file-finder <dir> <substring1>[<substring2> [<substring3>]...]\n");
+        
+        return 1;
     }
     else
     {
@@ -31,8 +34,14 @@ int main(int argc, const char * argv[])
         
     }
     
+    Container C(10);
     
-    //one thread to get input commands
+    Dir->traverse(argv[2], &C);
+    
+    Command Cmd;
+    int x = Cmd.start(&C);
+    
+    //one thread to get input commands //"CMD Object"
     
     //traverse dir
     
@@ -40,5 +49,5 @@ int main(int argc, const char * argv[])
     
     
     
-    return 0;
+    return x;
 }
