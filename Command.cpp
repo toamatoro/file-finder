@@ -5,18 +5,18 @@
 //  Created by Jonathan Lausch on 2/4/22.
 //
 
-#include <stdio.h>
+#include <iostream>
 
 #include "Command.h"
 #include "Container.h"
 
-Command::Command()
+/*Command::Command()
 {
-    int x = x+1;
+    int x = 1;
     std::cout << x;
-}
+}*/
 
-void Command::getInput(Container *)
+void Command::getInput(Container * C)
 {
     std::string input;
     
@@ -25,13 +25,26 @@ void Command::getInput(Container *)
         std::cout << "file-finder % ";
         std::cin >> input;
         
-        if(input == dump)
+        if(input == "dump")
         {
-            C->dump();
+            this->dump(C);
+        }
+        else if(input != "exit")
+        {
+            std::cout << "Valid commands are 'dump' or 'exit'." << '\n';
         }
     }
     
-    C->~Container();
+    //ensure everything is unlocked/freed here
     
-    return 0;
+}
+
+void Command::dump(Container * C)
+{
+    C->dump();
+}
+
+void Command::exit(Container * C)
+{
+    
 }

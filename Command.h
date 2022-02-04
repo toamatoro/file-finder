@@ -13,12 +13,14 @@
 class Command
 {
     std::string cmd;
-    void send();
+    void dump(Container *);
+    void exit(Container *);
 public:
-    Command();
-    ~Command();
+    //Command();
+    //~Command();
     
     void getInput(Container *);
 };
 
 #endif /* Command_h */
+

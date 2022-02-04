@@ -15,7 +15,8 @@ Container::Container(unsigned long capacity)
 
 Container::~Container()
 {
-    this->objects.clear();
+    if(!this->objects.empty())
+        this->objects.clear();
 }
 
 void Container::dump()
@@ -30,7 +31,8 @@ void Container::dump()
         std::cout << objects[i] << std::endl;
     }
     
-    this->objects.clear();
+    if(!this->objects.empty())
+        this->objects.clear();
     
     //this->mutex.unlock();
 }
