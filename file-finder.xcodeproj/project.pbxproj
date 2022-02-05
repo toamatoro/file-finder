@@ -53,14 +53,6 @@
 		ABF9D05327ACD9DE00AE1A1E = {
 			isa = PBXGroup;
 			children = (
-				AB314F6327ADBC16001340F7 /* Command.h */,
-				AB314F6427ADBC4D001340F7 /* Command.cpp */,
-				ABE416AA27ADF6EC007411DC /* Dumper.h */,
-				ABE416AB27ADF708007411DC /* Dumper.cpp */,
-				ABF9D06727ACE26D00AE1A1E /* Container.h */,
-				ABF9D06A27AD879700AE1A1E /* Container.cpp */,
-				ABF9D06C27AD8A4D00AE1A1E /* Directory.h */,
-				ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */,
 				ABF9D05E27ACD9DE00AE1A1E /* file-finder */,
 				ABF9D05D27ACD9DE00AE1A1E /* Products */,
 			);
@@ -77,6 +69,14 @@
 		ABF9D05E27ACD9DE00AE1A1E /* file-finder */ = {
 			isa = PBXGroup;
 			children = (
+				AB314F6327ADBC16001340F7 /* Command.h */,
+				AB314F6427ADBC4D001340F7 /* Command.cpp */,
+				ABF9D06727ACE26D00AE1A1E /* Container.h */,
+				ABF9D06A27AD879700AE1A1E /* Container.cpp */,
+				ABF9D06C27AD8A4D00AE1A1E /* Directory.h */,
+				ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */,
+				ABE416AA27ADF6EC007411DC /* Dumper.h */,
+				ABE416AB27ADF708007411DC /* Dumper.cpp */,
 				ABF9D05F27ACD9DE00AE1A1E /* main.cpp */,
 			);
 			path = "file-finder";
