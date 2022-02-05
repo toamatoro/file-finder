@@ -16,6 +16,7 @@ class Directory
     std::string path;
     std::string target;
     
+    bool complete;
     //int n_threads;
 public:
     Directory(std::string, std::string);

@@ -16,6 +16,7 @@ Directory::Directory(std::string path, std::string target)
 {
     this->path = path;
     this->target = target;
+    this->complete = false;
 }
 
 /*void Directory::addSubStr(std::string substr)
@@ -39,7 +40,6 @@ void Directory::traverse(std::string target, Container * buffer)
             buffer->addItem(s_entry);
         }
     }
-
 }
 
 std::string Directory::getTarget()

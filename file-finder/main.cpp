@@ -12,6 +12,7 @@
 #include "Directory.h"
 #include "Container.h"
 #include "Command.h"
+#include "Dumper.h"
 
 int main(int argc, const char * argv[])
 {
@@ -38,19 +39,23 @@ int main(int argc, const char * argv[])
     
     Container C(23);
     
+    Dumper * D = new Dumper(5000);
+    
     Command * Cmd = new Command();
+
 
     /*if(Dir.getThreads() < 1) //SHOULD NOT HAPPEN
         return 1;*/
     
-    std::vector<std::thread> t(argc - 1); // argc -2 +1
+    std::vector<std::thread> t(argc); // argc -2 +1 +1
     
     //Thread 0 is thread to get commands
-    t[0] = std::thread(&Command::getInput, Cmd, &C);
+    t[t.size()-1] = std::thread(&Command::getInput, Cmd, &C);
+    t[t.size()-2] = std::thread(&Dumper::dump, D, &C); //send directory list as input
     
-    for(int i = 1; i < t.size(); i++)
+    for(int i = 0; i < t.size()-2; i++)
     {
-        t[i] = std::thread(&Directory::traverse, Dirs[i-1], Dirs[i-1].getTarget(), &C); //originall i-1
+        t[i] = std::thread(&Directory::traverse, Dirs[i], Dirs[i].getTarget(), &C); //originall i-1
     }
     
     //NEED TO CHECK WHEN ALL ARE COMPLETE
@@ -60,7 +65,7 @@ int main(int argc, const char * argv[])
         t[i].join();
     }
     
-    C.dump();
+    //C.dump();
     
     return 0;
 }

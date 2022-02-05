@@ -8,6 +8,9 @@
 #include <iostream>
 #include "Container.h"
 
+#include <chrono>
+#include <thread>
+
 Container::Container(unsigned long capacity)
 {
     this->capacity = capacity;
@@ -32,39 +35,19 @@ Container::~Container()
 
 /*
  
- Container::dump - not thread safe, caller must ensure container is available
- 
- */
-void Container::dump()
-{
-    for(int i = 0; i < this->objects.size(); i++)
-    {
-        std::cout << objects[i] << std::endl;
-    }
-    
-    if(!this->objects.empty())
-    {
-        std::cout << "\nContainer::dump - Shared Container contents cleared.\n\n";
-        this->objects.clear();
-    }
-}
-
-/*
- 
  Container::addItem - return status if failing, but space guaranteed
  
  */
 void Container::addItem(std::string item)
 {
-    this->mutex.lock(); //blocks if unavailable
-    
-    if(this->isFull())
+    while(this->isFull())
     {
-        this->dump();
+        std::cout << "full\n";
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
     }
     
+    this->mutex.lock();
     this->objects.push_back(item);
-    
     this->mutex.unlock();
 }
 

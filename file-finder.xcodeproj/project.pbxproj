@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB314F6527ADBC4D001340F7 /* Command.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AB314F6427ADBC4D001340F7 /* Command.cpp */; };
+		ABE416AC27ADF708007411DC /* Dumper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABE416AB27ADF708007411DC /* Dumper.cpp */; };
 		ABF9D06027ACD9DE00AE1A1E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D05F27ACD9DE00AE1A1E /* main.cpp */; };
 		ABF9D06B27AD879700AE1A1E /* Container.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D06A27AD879700AE1A1E /* Container.cpp */; };
 		ABF9D06E27AD8AD200AE1A1E /* Directory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ABF9D06D27AD8AD200AE1A1E /* Directory.cpp */; };
@@ -28,6 +29,8 @@
 /* Begin PBXFileReference section */
 		AB314F6327ADBC16001340F7 /* Command.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Command.h; sourceTree = "<group>"; };
 		AB314F6427ADBC4D001340F7 /* Command.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Command.cpp; sourceTree = "<group>"; };
+		ABE416AA27ADF6EC007411DC /* Dumper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dumper.h; sourceTree = "<group>"; };
+		ABE416AB27ADF708007411DC /* Dumper.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dumper.cpp; sourceTree = "<group>"; };
 		ABF9D05C27ACD9DE00AE1A1E /* file-finder */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "file-finder"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF9D05F27ACD9DE00AE1A1E /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		ABF9D06727ACE26D00AE1A1E /* Container.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Container.h; sourceTree = "<group>"; };
@@ -52,6 +55,8 @@
 			children = (
 				AB314F6327ADBC16001340F7 /* Command.h */,
 				AB314F6427ADBC4D001340F7 /* Command.cpp */,
+				ABE416AA27ADF6EC007411DC /* Dumper.h */,
+				ABE416AB27ADF708007411DC /* Dumper.cpp */,
 				ABF9D06727ACE26D00AE1A1E /* Container.h */,
 				ABF9D06A27AD879700AE1A1E /* Container.cpp */,
 				ABF9D06C27AD8A4D00AE1A1E /* Directory.h */,
@@ -134,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABE416AC27ADF708007411DC /* Dumper.cpp in Sources */,
 				ABF9D06B27AD879700AE1A1E /* Container.cpp in Sources */,
 				ABF9D06027ACD9DE00AE1A1E /* main.cpp in Sources */,
 				ABF9D06E27AD8AD200AE1A1E /* Directory.cpp in Sources */,

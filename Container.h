@@ -12,15 +12,15 @@
 
 class Container
 {
-    std::vector<std::string> objects;
-    
     unsigned long capacity;
     bool isFull();
 public:
+    std::vector<std::string> objects;
+    
     Container(unsigned long);
     ~Container();
     
-    void dump();
+    void dumper(int);
     void addItem(std::string);
     
     std::mutex mutex; //why is public

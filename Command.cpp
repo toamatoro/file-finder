@@ -46,7 +46,7 @@ void Command::getInput(Container * C)
 void Command::dump(Container * C)
 {
     C->mutex.lock();
-    C->dump();
+    //C->dump();
     C->mutex.unlock();
 }
 
