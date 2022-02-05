@@ -16,17 +16,16 @@ class Directory
 {
     std::string path;
     std::string target;
-    
-    bool complete;
-    //int n_threads;
+
 public:
+    bool complete;
     Directory(std::string, std::string);
     //~Directory();
     
     void traverse(std::string, Container *); //make sure these methods pass
-    //void addSubStr(std::string);
     std::string getTarget();
     bool isComplete();
+    void interrupt();
 };
 
 #endif /* Directory_h */

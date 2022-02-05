@@ -8,7 +8,7 @@
 #include <iostream>
 
 #include "Command.h"
-#include "Container.h"
+//#include "Container.h"
 
 /*Command::Command()
 {
@@ -16,11 +16,11 @@
     std::cout << x;
 }*/
 
-void Command::getInput(Container * C)
+void Command::getInput(Container * C, const std::vector<Directory *> & D)
 {
     std::string input;
     
-    while(input != "exit")
+    while((input != "exit") && !(this->isComplete(D)))
     {
         std::cout << "file-finder % ";
         getline(std::cin, input);
@@ -39,7 +39,7 @@ void Command::getInput(Container * C)
         }
     }
     
-    //ensure everything is unlocked/freed here
+    this->exit(C, D);
     
 }
 
@@ -50,7 +50,28 @@ void Command::dump(Container * C)
     C->mutex.unlock();
 }
 
-void Command::exit(Container * C)
+void Command::exit(Container * C, const std::vector<Directory *> & D)
 {
+    //lock buffer
+    C->mutex.lock();
+    //stop directory traversals
+    for(int i = 0; i < D.size(); i++)
+    {
+        D[i]->interrupt();
+    }
     
+    //dump buffer / free everything
+    C->mutex.unlock();
+    //quit
+}
+
+bool Command::isComplete(const std::vector<Directory *> & D)
+{
+    for(int i = 0; i < D.size(); i++)
+    {
+        if(!D[i]->complete) //how to access
+            return false;
+    }
+    
+    return true;
 }

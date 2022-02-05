@@ -14,12 +14,12 @@
 
 class Dumper
 {
-    bool isComplete(std::vector<Directory> *);
+    bool isComplete(const std::vector<Directory *> &);
 public:
     int interval;
     
     Dumper(int);
-    void dump(Container *, std::vector<Directory> *);
+    void dump(Container *, const std::vector<Directory *> &);
 };
 
 

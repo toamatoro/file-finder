@@ -9,17 +9,20 @@
 #define Command_h
 
 #include "Container.h"
+#include "Directory.h"
 
 class Command
 {
     std::string cmd;
     void dump(Container *);
-    void exit(Container *);
+    void exit(Container *, const std::vector<Directory *> &);
+    bool isComplete(const std::vector<Directory *> &);
 public:
     //Command();
     //~Command();
+    std::string input;
     
-    void getInput(Container *);
+    void getInput(Container *, const std::vector<Directory *> &);
 };
 
 #endif /* Command_h */

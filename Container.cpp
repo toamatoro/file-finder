@@ -43,7 +43,7 @@ void Container::addItem(std::string item)
     while(this->isFull())
     {
         std::cout << "full\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //change for speedup
     }
     
     this->mutex.lock();
@@ -57,4 +57,22 @@ bool Container::isFull()
         return true;
     else
         return false;
+}
+
+void Container::dump()
+{
+    if(!this->objects.empty())
+    {
+        for(int i = 0; i < this->objects.size(); i++)
+        {
+            std::cout << this->objects[i] << std::endl;
+        }
+
+        std::cout << "\nContainer::dump - Shared Container contents cleared.\n\n";
+        this->objects.clear();
+    }
+    else
+    {
+        std::cout << "\nContainer::dump - Container empty.\n\n";
+    }
 }

@@ -20,7 +20,7 @@ public:
     Container(unsigned long);
     ~Container();
     
-    void dumper(int);
+    void dump();
     void addItem(std::string);
     
     std::mutex mutex; //why is public
