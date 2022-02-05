@@ -42,16 +42,12 @@ int main(int argc, const char * argv[])
     Dumper * D = new Dumper(5000);
     
     Command * Cmd = new Command();
-
-
-    /*if(Dir.getThreads() < 1) //SHOULD NOT HAPPEN
-        return 1;*/
     
     std::vector<std::thread> t(argc); // argc -2 +1 +1
     
     //Thread 0 is thread to get commands
     t[t.size()-1] = std::thread(&Command::getInput, Cmd, &C);
-    t[t.size()-2] = std::thread(&Dumper::dump, D, &C); //send directory list as input
+    t[t.size()-2] = std::thread(&Dumper::dump, D, &C, &Dirs); //send directory list as input
     
     for(int i = 0; i < t.size()-2; i++)
     {

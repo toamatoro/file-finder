@@ -46,3 +46,8 @@ std::string Directory::getTarget()
 {
     return this->target;
 }
+
+bool Directory::isComplete()
+{
+    return this->complete;
+}

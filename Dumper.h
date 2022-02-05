@@ -9,14 +9,17 @@
 #define Dumper_h
 
 #include "Container.h"
+#include "Directory.h"
+#include <vector>
 
 class Dumper
 {
+    bool isComplete(std::vector<Directory> *);
 public:
     int interval;
     
     Dumper(int);
-    void dump(Container *);
+    void dump(Container *, std::vector<Directory> *);
 };
 
 

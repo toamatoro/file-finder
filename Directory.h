@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Container.h"
+#include "Directory.h"
 
 class Directory
 {
@@ -25,6 +26,7 @@ public:
     void traverse(std::string, Container *); //make sure these methods pass
     //void addSubStr(std::string);
     std::string getTarget();
+    bool isComplete();
 };
 
 #endif /* Directory_h */
