@@ -60,7 +60,7 @@ void Container::addItem(std::string item)
 {
     while(this->isFull())
     {
-        std::cout << "full\n";
+        std::cout << "Container::addItem - Container is full, waiting for space.\n";
         std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //change for speedup
     }
     

@@ -34,11 +34,10 @@ void Dumper::dump(Container * C, const std::vector<Directory *> & D)
             break;
         }
         
-        std::cout << "hello\n";
         C->mutex.lock();
         C->dump();
         C->mutex.unlock();
-        std::this_thread::sleep_for(std::chrono::milliseconds(interval));
+        std::this_thread::sleep_for(std::chrono::milliseconds(this->interval));
     }
     
     //dump remaining Container contents
