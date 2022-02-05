@@ -8,9 +8,10 @@
 #ifndef Dumper_h
 #define Dumper_h
 
+#include <vector>
+
 #include "Container.h"
 #include "Directory.h"
-#include <vector>
 
 class Dumper
 {

@@ -8,13 +8,6 @@
 #include <iostream>
 
 #include "Command.h"
-//#include "Container.h"
-
-/*Command::Command()
-{
-    int x = 1;
-    std::cout << x;
-}*/
 
 void Command::getInput(Container * C, const std::vector<Directory *> & D)
 {
@@ -61,6 +54,7 @@ void Command::exit(Container * C, const std::vector<Directory *> & D)
     }
     
     //dump buffer / free everything
+    C->dump();
     C->mutex.unlock();
     //quit
 }
@@ -69,7 +63,7 @@ bool Command::isComplete(const std::vector<Directory *> & D)
 {
     for(int i = 0; i < D.size(); i++)
     {
-        if(!D[i]->complete) //how to access
+        if(!D[i]->complete)
             return false;
     }
     

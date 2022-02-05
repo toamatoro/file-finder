@@ -18,8 +18,6 @@ class Command
     void exit(Container *, const std::vector<Directory *> &);
     bool isComplete(const std::vector<Directory *> &);
 public:
-    //Command();
-    //~Command();
     std::string input;
     
     void getInput(Container *, const std::vector<Directory *> &);

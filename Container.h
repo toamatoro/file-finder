@@ -23,7 +23,7 @@ public:
     void dump();
     void addItem(std::string);
     
-    std::mutex mutex; //why is public
+    std::mutex mutex;
 };
 
 #endif /* Container_h */

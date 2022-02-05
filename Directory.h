@@ -10,7 +10,6 @@
 
 #include <vector>
 #include "Container.h"
-#include "Directory.h"
 
 class Directory
 {
@@ -19,13 +18,13 @@ class Directory
 
 public:
     bool complete;
-    Directory(std::string, std::string);
-    //~Directory();
     
-    void traverse(std::string, Container *); //make sure these methods pass
-    std::string getTarget();
-    bool isComplete();
+    Directory(std::string, std::string);
+    
     void interrupt();
+    bool isComplete();
+    std::string getTarget();
+    void traverse(std::string, Container *);
 };
 
 #endif /* Directory_h */
