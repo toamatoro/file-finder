@@ -33,9 +33,9 @@ void Command::getInput(Container * C, const std::vector<Directory *> & D)
         }
         else if(input == "dump")
         {
-            C->mutex.lock();
+            C->m.lock();
             C->dump();
-            C->mutex.unlock();
+            C->m.unlock();
         }
         else if(input != "exit")
         {
@@ -59,7 +59,7 @@ void Command::getInput(Container * C, const std::vector<Directory *> & D)
  */
 void Command::exit(Container * C, const std::vector<Directory *> & D)
 {
-    C->mutex.lock();
+    C->m.lock();
     
     //stop directory traversals
     for(int i = 0; i < D.size(); i++)
@@ -69,7 +69,7 @@ void Command::exit(Container * C, const std::vector<Directory *> & D)
     
     //dump buffer / free everything
     C->dump();
-    C->mutex.unlock();
+    C->m.unlock();
 }
 
 /*

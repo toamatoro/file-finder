@@ -9,6 +9,7 @@
 #define Container_h
 
 #include <vector>
+#include <mutex>
 
 class Container
 {
@@ -23,7 +24,7 @@ public:
     void dump();
     void addItem(std::string);
     
-    std::mutex mutex;
+    std::mutex m;
 };
 
 #endif /* Container_h */

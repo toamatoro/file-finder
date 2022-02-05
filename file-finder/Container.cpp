@@ -33,7 +33,7 @@ Container::Container(unsigned long capacity)
  */
 Container::~Container()
 {
-    this->mutex.lock();
+    this->m.lock();
     
     if(!this->objects.empty())
     {
@@ -45,7 +45,7 @@ Container::~Container()
         std::cout << "Container::~Container - Attempted to clear Shared Container, already empty.\n";
     }
     
-    this->mutex.unlock();
+    this->m.unlock();
 }
 
 /*
@@ -64,9 +64,9 @@ void Container::addItem(std::string item)
         std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //change for speedup
     }
     
-    this->mutex.lock();
+    this->m.lock();
     this->objects.push_back(item);
-    this->mutex.unlock();
+    this->m.unlock();
 }
 
 /*
