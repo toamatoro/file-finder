@@ -11,6 +11,14 @@
 
 #include "Directory.h"
 
+/*
+ 
+ Directory::Directory
+ 
+ Inputs: path to traverse, target substring to search for
+ Purpose: Create a Directory object to search for a target substring within the given path.
+ 
+ */
 Directory::Directory(std::string path, std::string target)
 {
     this->path = path;
@@ -18,7 +26,15 @@ Directory::Directory(std::string path, std::string target)
     this->complete = false;
 }
 
-void Directory::traverse(std::string target, Container * buffer)
+/*
+ 
+ Directory::traverse
+ 
+ Inputs: Shared Container
+ Purpose: traverse the directory and find entries with target substring
+ 
+ */
+void Directory::traverse(Container * buffer)
 {
     const std::filesystem::path dir{this->path};
     
@@ -32,7 +48,7 @@ void Directory::traverse(std::string target, Container * buffer)
         {
             std::string s_entry = a_entry.path();
         
-            if(s_entry.find(target, 0) != std::string::npos)
+            if(s_entry.find(this->target, 0) != std::string::npos)
             {
                 // to slow down access for testing
                 int r = rand() % 100;
@@ -45,16 +61,24 @@ void Directory::traverse(std::string target, Container * buffer)
     this->complete = true;
 }
 
-std::string Directory::getTarget()
-{
-    return this->target;
-}
-
+/*
+ 
+ Directory::isComplete
+ Purpose: return status of Directory Object's traversal
+ 
+ */
 bool Directory::isComplete()
 {
     return this->complete;
 }
 
+/*
+ 
+ Directory::interrupt
+ 
+ Purpose: when exit command is called, set Traversal process to "complete" so it does not continue
+ 
+ */
 void Directory::interrupt()
 {
     this->complete = true;

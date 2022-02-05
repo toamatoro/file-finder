@@ -23,8 +23,7 @@ public:
     
     void interrupt();
     bool isComplete();
-    std::string getTarget();
-    void traverse(std::string, Container *);
+    void traverse(Container *);
 };
 
 #endif /* Directory_h */

@@ -14,7 +14,6 @@
 class Command
 {
     std::string cmd;
-    void dump(Container *);
     void exit(Container *, const std::vector<Directory *> &);
     bool isComplete(const std::vector<Directory *> &);
 public:

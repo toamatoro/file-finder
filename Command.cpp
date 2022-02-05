@@ -9,13 +9,22 @@
 
 #include "Command.h"
 
+/*
+ 
+ Command::getInput
+ 
+ Inputs: Shared container, list of Directory objects
+ Outputs: none
+ 
+ Purpose: Receive user input during directory traversals
+ 
+ */
 void Command::getInput(Container * C, const std::vector<Directory *> & D)
 {
     std::string input;
     
     while((input != "exit") && !(this->isComplete(D)))
     {
-        std::cout << "file-finder % ";
         getline(std::cin, input);
         
         if(input.length() == 0)
@@ -24,7 +33,9 @@ void Command::getInput(Container * C, const std::vector<Directory *> & D)
         }
         else if(input == "dump")
         {
-            this->dump(C);
+            C->mutex.lock();
+            C->dump();
+            C->mutex.unlock();
         }
         else if(input != "exit")
         {
@@ -33,20 +44,23 @@ void Command::getInput(Container * C, const std::vector<Directory *> & D)
     }
     
     this->exit(C, D);
-    
 }
 
-void Command::dump(Container * C)
-{
-    C->mutex.lock();
-    //C->dump();
-    C->mutex.unlock();
-}
-
+/*
+ 
+ Command::exit
+ 
+ Inputs: Shared Container, List of Directory Objects
+ Outputs: None
+ 
+ Purpose: When traversals are complete, or exit command called, this method will
+ initiate the cleanup process.
+ 
+ */
 void Command::exit(Container * C, const std::vector<Directory *> & D)
 {
-    //lock buffer
     C->mutex.lock();
+    
     //stop directory traversals
     for(int i = 0; i < D.size(); i++)
     {
@@ -56,9 +70,18 @@ void Command::exit(Container * C, const std::vector<Directory *> & D)
     //dump buffer / free everything
     C->dump();
     C->mutex.unlock();
-    //quit
 }
 
+/*
+ 
+ Command::isComplete
+ 
+ Inputs: List of Directory Objects
+ Outputs: true if all traversals are complete
+ 
+ Purpose: Check all concurrent traversal processes for completion status.
+ 
+ */
 bool Command::isComplete(const std::vector<Directory *> & D)
 {
     for(int i = 0; i < D.size(); i++)

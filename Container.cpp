@@ -11,11 +11,26 @@
 
 #include "Container.h"
 
+/*
+ 
+ Container::Container
+ 
+ Inputs: capacity - number of path items the container can hold
+ Purpose: Container Constructor
+ 
+ */
 Container::Container(unsigned long capacity)
 {
     this->capacity = capacity;
 }
 
+/*
+ 
+ Container::~Container
+ 
+ Purpose: Clean up Container Objects when descoped (Destructor)
+ 
+ */
 Container::~Container()
 {
     this->mutex.lock();
@@ -35,7 +50,10 @@ Container::~Container()
 
 /*
  
- Container::addItem - return status if failing, but space guaranteed
+ Container::addItem
+ 
+ Input: item to be added to container
+ Purpose: add Items to Shared container in thread safe manner
  
  */
 void Container::addItem(std::string item)
@@ -51,6 +69,14 @@ void Container::addItem(std::string item)
     this->mutex.unlock();
 }
 
+/*
+ 
+ Container::isFull
+ 
+ Outputs: true if Shared Container is full, false if not full
+ Purpose: determine if space is available in the Shared Container
+ 
+ */
 bool Container::isFull()
 {
     if(this->objects.size() == this->capacity)
@@ -59,6 +85,15 @@ bool Container::isFull()
         return false;
 }
 
+/*
+ 
+ Container::dump
+ 
+ Purpose: print all contents of Shared Container to console
+ 
+ NOTE: THIS METHOD IS NOT THREAD SAFE, CALLER MUST CHECK CONTAINER AVAILABILITY
+ 
+ */
 void Container::dump()
 {
     if(!this->objects.empty())
