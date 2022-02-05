@@ -51,8 +51,8 @@ void Directory::traverse(Container * buffer)
             if(s_entry.find(this->target, 0) != std::string::npos)
             {
                 // to slow down access for testing
-                int r = rand() % 100;
-                std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::milliseconds(r));
+                //int r = rand() % 100;
+                //std::this_thread::sleep_until(std::chrono::system_clock::now() + std::chrono::milliseconds(r));
                 buffer->addItem(s_entry);
             }
         }

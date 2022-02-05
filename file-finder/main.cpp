@@ -4,8 +4,9 @@
 //
 //  Created by Jonathan Lausch on 2/3/22.
 //
-
+#include <stdio.h>
 #include <iostream>
+#include <filesystem>
 #include <thread>
 #include <vector>
 
@@ -26,7 +27,7 @@ int main(int argc, const char * argv[])
     }
     else
     {
-        //CHECK THAT THE PATH EXISTS
+        //assuming filepath exists
         
         for(int i = 2; i < argc; i++)
         {
@@ -37,7 +38,7 @@ int main(int argc, const char * argv[])
     
     Container C(23);
     
-    Dumper * D = new Dumper(5000);
+    Dumper * D = new Dumper(4000);
     
     Command * Cmd = new Command();
     
