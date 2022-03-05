@@ -38,6 +38,10 @@ void Dumper::dump(Container * C, const std::vector<Directory *> & D)
             break;
         }
     }
+    
+    C->m.lock();
+    C->dump();
+    C->m.unlock();
 }
 
 /*

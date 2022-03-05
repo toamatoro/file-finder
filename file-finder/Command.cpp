@@ -37,7 +37,7 @@ void Command::getInput(Container * C, const std::vector<Directory *> & D)
             C->dump();
             C->m.unlock();
         }
-        else if(input != "exit")
+        else
         {
             std::cout << "Valid commands are 'dump' or 'exit'." << '\n';
         }
