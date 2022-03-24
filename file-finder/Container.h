@@ -10,6 +10,7 @@
 
 #include <vector>
 #include <mutex>
+#include <condition_variable>
 
 class Container
 {
@@ -25,6 +26,7 @@ public:
     void addItem(std::string);
     
     std::mutex m;
+    std::condition_variable cond;
 };
 
 #endif /* Container_h */

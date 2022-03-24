@@ -29,9 +29,8 @@ void Dumper::dump(Container * C, const std::vector<Directory *> & D)
     std::cout << "Dumper::dump - Starting Dump Thread.\n";
     while(1 < 2)
     {
-        C->m.lock();
         C->dump();
-        C->m.unlock();
+
         std::this_thread::sleep_for(std::chrono::milliseconds(this->interval)); // how to interrupt
         if(this->isComplete(D))
         {
@@ -39,9 +38,9 @@ void Dumper::dump(Container * C, const std::vector<Directory *> & D)
         }
     }
     
-    C->m.lock();
+    //C->m.lock();
     C->dump();
-    C->m.unlock();
+    //C->m.unlock();
 }
 
 /*

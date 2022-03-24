@@ -33,7 +33,7 @@ Container::Container(unsigned long capacity)
  */
 Container::~Container()
 {
-    this->m.lock();
+    const std::lock_guard<std::mutex> lock(this->m);
     
     if(!this->objects.empty())
     {
@@ -45,7 +45,7 @@ Container::~Container()
         std::cout << "Container::~Container - Attempted to clear Shared Container, already empty.\n";
     }
     
-    this->m.unlock();
+    this->cond.notify_all();
 }
 
 /*
@@ -58,15 +58,16 @@ Container::~Container()
  */
 void Container::addItem(std::string item)
 {
-    while(this->isFull())
+    std::unique_lock<std::mutex> lk(this->m);
+    if(this->isFull())
     {
-        std::cout << "Container::addItem - Container is full, waiting for space.\n";
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000)); //change for speedup
+        std::cout << "Container::addItem - Container is full.\n";
+        
+        this->cond.wait(lk);
+    
     }
     
-    this->m.lock();
     this->objects.push_back(item);
-    this->m.unlock();
 }
 
 /*
@@ -91,12 +92,10 @@ bool Container::isFull()
  
  Purpose: print all contents of Shared Container to console
  
- NOTE: THIS METHOD IS NOT THREAD SAFE, CALLER MUST CHECK CONTAINER AVAILABILITY
- 
  */
 void Container::dump()
 {
-    
+    const std::lock_guard<std::mutex> lock(this->m);
     if(!this->objects.empty())
     {
         for(int i = 0; i < this->objects.size(); i++)
@@ -111,4 +110,7 @@ void Container::dump()
     {
         std::cout << "\nContainer::dump - Container empty.\n\n";
     }
+    
+    //NEW: Notify sleeping threads
+    this->cond.notify_all();
 }
